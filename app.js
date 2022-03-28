@@ -46,36 +46,36 @@ function handleColorClick(event){
     ctx.fillStyle = color;
 }
 
-function handleRangeChange(event){
-    const size = (event.target.value);
+function handleRangeChange(event) {
+    const size = event.target.value;
     ctx.lineWidth = size;
 }
 
 function handleModeClick() {
     if(filling === true) {
         filling = false;
-        mode.innerText = "Fill"
+        mode.innerText = "Fill";
     } else {
         filling = true;
         mode.innerText = "Paint";
     }
 }
 
-function handleCanvasClick(){
+function handleCanvasClick() {
     if(filling){
         ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
     }
 }
 
 function handleCM(event){
-    event.preventDdfault();
+    event.preventDefault();
 }
 
 function handleSaveClick(){
     const image = canvas.toDataURL();
     const link = document.createElement("a");
     link.href = image;
-    link.download = "PaintJS"[🎨];
+    link.download = "PaintJS[🎨]";
     link,click();
 }
 
@@ -88,7 +88,8 @@ if(canvas){
     canvas.addEventListener("contextmenu", handleCM);
 }
 
-Array.from(colors). forEach(color => color.addEventListener("click", handleColorClick));
+Array.from(colors).forEach(color => 
+    color.addEventListener("click", handleColorClick));
 
 if (range) {
     range.addEventListener("input", handleRangeChange);
@@ -97,7 +98,6 @@ if (range) {
 if(mode) {
     mode.addEventListener("click", handleModeClick)
 }
-
 
 
 if(saveBtn){
